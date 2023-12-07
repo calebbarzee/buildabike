@@ -7,12 +7,11 @@ struct HomePageView: View {
 
     var body: some View {
         VStack {
-            Spacer()
-            Text("Welcome to BuildaBike!")
-                .font(.largeTitle)
-                .padding()
-
             NavigationStack {
+                Spacer()
+                Text("Welcome to BuildaBike!")
+                    .font(.largeTitle)
+                    .padding()
                 List {
                     ForEach(bikes) { bike in
                         if editingBikeID == bike.id {
@@ -34,7 +33,7 @@ struct HomePageView: View {
                     .onDelete(perform: deleteBike)
 
                     Button(action: {
-                        let newBike = Bike(id: UUID(), name: "New Bike")
+                        let newBike = Bike(id: UUID(), name: "New Bike", parts: [])
                         bikes.append(newBike)
                     }) {
                         Text("+")
@@ -50,19 +49,6 @@ struct HomePageView: View {
         bikes.remove(atOffsets: offsets)
     }
 
-}
-
-struct BikeDetailView: View {
-    var bike: Bike
-
-    var body: some View {
-        VStack {
-            Text(bike.name)
-                .font(.title)
-            // Add more bike details here
-        }
-        .navigationTitle("Bike Details")
-    }
 }
 
 #Preview {

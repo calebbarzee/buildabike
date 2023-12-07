@@ -17,6 +17,11 @@
 		3F8690602B17C44900ECDBB6 /* bikeParts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F86905F2B17C44900ECDBB6 /* bikeParts.json */; };
 		3F981FDA2B2136C8007DC190 /* bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F981FD92B2136C8007DC190 /* bike.swift */; };
 		3F981FE12B215A04007DC190 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F981FD62B213664007DC190 /* HomePageView.swift */; };
+		3FDACAC82B2181C70097DEE2 /* BikeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACAC72B2181C70097DEE2 /* BikeIcon.swift */; };
+		3FDACACA2B2181F30097DEE2 /* BikeIconClickMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACAC92B2181F30097DEE2 /* BikeIconClickMap.swift */; };
+		3FDACACC2B2182350097DEE2 /* SelectorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACACB2B2182350097DEE2 /* SelectorIconView.swift */; };
+		3FDACACE2B2186AF0097DEE2 /* FindPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACACD2B2186AF0097DEE2 /* FindPartView.swift */; };
+		3FDACAD02B2187210097DEE2 /* PhysicsCalcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACACF2B2187210097DEE2 /* PhysicsCalcView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,11 @@
 		3F86905F2B17C44900ECDBB6 /* bikeParts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bikeParts.json; sourceTree = "<group>"; };
 		3F981FD62B213664007DC190 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		3F981FD92B2136C8007DC190 /* bike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bike.swift; sourceTree = "<group>"; };
+		3FDACAC72B2181C70097DEE2 /* BikeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeIcon.swift; sourceTree = "<group>"; };
+		3FDACAC92B2181F30097DEE2 /* BikeIconClickMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeIconClickMap.swift; sourceTree = "<group>"; };
+		3FDACACB2B2182350097DEE2 /* SelectorIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorIconView.swift; sourceTree = "<group>"; };
+		3FDACACD2B2186AF0097DEE2 /* FindPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPartView.swift; sourceTree = "<group>"; };
+		3FDACACF2B2187210097DEE2 /* PhysicsCalcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCalcView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,9 @@
 				3F36BFB92B17C25000C39AC9 /* ContentView.swift */,
 				3F981FD62B213664007DC190 /* HomePageView.swift */,
 				3F78112E2B2174710037370F /* BikeDetailView.swift */,
+				3FDACACB2B2182350097DEE2 /* SelectorIconView.swift */,
+				3FDACACD2B2186AF0097DEE2 /* FindPartView.swift */,
+				3FDACACF2B2187210097DEE2 /* PhysicsCalcView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,9 +117,19 @@
 		3F981FE02B213C68007DC190 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3FDACAC62B2181A20097DEE2 /* Icons */,
 				3F86905F2B17C44900ECDBB6 /* bikeParts.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3FDACAC62B2181A20097DEE2 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				3FDACAC72B2181C70097DEE2 /* BikeIcon.swift */,
+				3FDACAC92B2181F30097DEE2 /* BikeIconClickMap.swift */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,12 +204,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F78112F2B2174710037370F /* BikeDetailView.swift in Sources */,
+				3FDACAD02B2187210097DEE2 /* PhysicsCalcView.swift in Sources */,
 				3F36BFBA2B17C25000C39AC9 /* ContentView.swift in Sources */,
 				3F36BFB82B17C25000C39AC9 /* build_a_bikeApp.swift in Sources */,
 				3F86905C2B17C3D300ECDBB6 /* LoadParts.swift in Sources */,
 				3F86905E2B17C3FC00ECDBB6 /* CheckCompatibility.swift in Sources */,
+				3FDACACE2B2186AF0097DEE2 /* FindPartView.swift in Sources */,
+				3FDACAC82B2181C70097DEE2 /* BikeIcon.swift in Sources */,
 				3F981FE12B215A04007DC190 /* HomePageView.swift in Sources */,
 				3F981FDA2B2136C8007DC190 /* bike.swift in Sources */,
+				3FDACACC2B2182350097DEE2 /* SelectorIconView.swift in Sources */,
+				3FDACACA2B2181F30097DEE2 /* BikeIconClickMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
