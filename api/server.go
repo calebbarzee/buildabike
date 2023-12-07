@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"fmt"
@@ -7,13 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
-	s := NewService()
-	s.Run()
-}
-
 type Service struct {
-	ds DataSource
+	ds     DataSource
 	router *gin.Engine
 }
 
@@ -22,23 +17,20 @@ func NewService() Service {
 	if err != nil {
 		fmt.Print(err)
 	}
-	s := Service {
+	s := Service{
 		ds: ds,
 	}
-	
+
 	router := gin.Default()
 	api := router.Group("/api")
 	api.GET("/healthz", s.getHealth)
 
 	v1 := api.Group("/v1")
 
-	// /api/v1/db/
-	v1.POST("/db", s.postDB)
-	// /api/v1/db/
-	v1.DELETE("/db", s.deleteDB)
-
-	// /api/v1/part/
-	v1.GET("/part", s.getParts)
+	// /api/v1/part/<id>
+	v1.GET("/part/:id", s.getParts)
+	// /api/v1/parts/
+	v1.GET("/part/:category", s.getParts)
 
 	s.router = router
 	return s
@@ -69,7 +61,7 @@ func (s Service) deleteDB(c *gin.Context) {
 	}
 }
 
-//getParts responds with information about all parts in DB
+// getParts responds with information about all parts in DB
 func (s Service) getParts(c *gin.Context) {
 	// TODO
 }

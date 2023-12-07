@@ -1,8 +1,8 @@
 {
   "frames": [
     {
-        "id": "34b7bcd5-7137-41b4-b82b-a6f10d484b9c",
-        "name": "Road Frame",
+      "id": "34b7bcd5-7137-41b4-b82b-a6f10d484b9c",
+      "name": "Road Frame",
       "type": "Road",
       "materialType": "Carbon Fiber",
       "seatpostDiameter": 27.2,
@@ -12,8 +12,8 @@
       "rearWheelSize": "700c"
     },
     {
-        "id": "108774aa-d8a4-4e87-8df7-97ce1c73e7a9",
-        "name": "Mountain Frame",
+      "id": "108774aa-d8a4-4e87-8df7-97ce1c73e7a9",
+      "name": "Mountain Frame",
       "type": "Mountain",
       "materialType": "Aluminum",
       "seatpostDiameter": 30.9,
@@ -23,8 +23,8 @@
       "rearWheelSize": "27.5 inch"
     },
     {
-        "id": "e08d100c-302e-4ede-b45f-83076fd7f96d",
-        "name": "Gravel Frame",
+      "id": "e08d100c-302e-4ede-b45f-83076fd7f96d",
+      "name": "Gravel Frame",
       "type": "Gravel",
       "materialType": "Steel",
       "seatpostDiameter": 31.6,
@@ -36,8 +36,8 @@
   ],
   "forks": [
     {
-        "id": "61d38ae3-74c3-4473-9a23-bb0b07da5a90",
-        "name": "Carbon Fork",
+      "id": "61d38ae3-74c3-4473-9a23-bb0b07da5a90",
+      "name": "Carbon Fork",
       "type": "Road",
       "materialType": "Carbon Fiber",
       "wheelSize": "700c",
@@ -49,8 +49,8 @@
       "brakeMountType": "Caliper"
     },
     {
-        "id": "b5b0c3e7-fcde-474c-9346-a809e02021b4",
-        "name": "Suspension Fork",
+      "id": "b5b0c3e7-fcde-474c-9346-a809e02021b4",
+      "name": "Suspension Fork",
       "type": "Mountain",
       "materialType": "Aluminum",
       "wheelSize": "27.5 inch",
@@ -62,8 +62,8 @@
       "brakeMountType": "Disc"
     },
     {
-        "id": "9b4f697f-0293-4874-9fa4-d7a88dd5abe8",
-        "name": "Gravel Fork",
+      "id": "9b4f697f-0293-4874-9fa4-d7a88dd5abe8",
+      "name": "Gravel Fork",
       "type": "Gravel",
       "materialType": "Steel",
       "wheelSize": "700c",
@@ -77,100 +77,112 @@
   ],
   "headsets": [
     {
-        "id": "02c7107e-1591-4f6b-81c6-222bd3718315",
-        "name": "Integrated Headset",
+      "id": "02c7107e-1591-4f6b-81c6-222bd3718315",
+      "name": "Integrated Headset",
       "type": "Integrated",
       "materialType": "Aluminum",
       "angle": 0.0349,
       "length": 40.0,
-      "handlebarDiameterMin": 31.8,
-      "handlebarDiameterMax": 31.8,
+      "handlebarDiameter": {
+        "min": 31.8,
+        "max": 31.8
+      },
       "steeringTubeDiameter": 28.6
     },
     {
-        "id": "50d2bc92-bd0a-492f-8b85-7bfcf1cda510",
-        "name": "External Headset",
+      "id": "50d2bc92-bd0a-492f-8b85-7bfcf1cda510",
+      "name": "External Headset",
       "type": "External",
       "materialType": "Steel",
       "angle": 0.0349,
       "length": 50.0,
-      "handlebarDiameterMin": 31.8,
-      "handlebarDiameterMax": 31.8,
+      "handlebarDiameter": {
+        "min": 31.8,
+        "max": 31.8
+      },
       "steeringTubeDiameter": 31.8
     },
     {
-        "id": "f8f85092-55cc-466b-bfdd-76878231983d",
-        "name": "Zerostack Headset",
+      "id": "f8f85092-55cc-466b-bfdd-76878231983d",
+      "name": "Zerostack Headset",
       "type": "Zerostack",
       "materialType": "Aluminum",
       "angle": 0.0349,
       "length": 30.0,
-      "handlebarDiameterMin": 31.8,
-      "handlebarDiameterMax": 31.8,
+      "handlebarDiameter": {
+        "min": 31.8,
+        "max": 31.8
+      },
       "steeringTubeDiameter": 28.6
     }
   ],
   "wheels": [
     {
-        "id": "a3dd5db6-7ecf-4953-96ca-9efa9201f55d",
-        "name": "Road Wheel 700c",
+      "id": "a3dd5db6-7ecf-4953-96ca-9efa9201f55d",
+      "name": "Road Wheel 700c",
       "type": "Road",
       "materialType": "Aluminum",
-      "boltType": "Quick Release",
+      "mountType": "Quick Release",
       "diameter": 622.0,
       "width": 25.0,
-      "compatibleTireTypes": ["Road", "Gravel"]
+      "compatibilities": {
+        "tire": ["Road", "Gravel"]
+      }
     },
     {
-        "id": "73945fe7-01dd-46d4-acf2-ca309eeab221",
-        "name": "Mountain Wheel 275",
+      "id": "73945fe7-01dd-46d4-acf2-ca309eeab221",
+      "name": "Mountain Wheel 275",
       "type": "Mountain",
       "materialType": "Aluminum",
-      "boltType": "Thru Axle",
+      "mountType": "Thru Axle",
       "diameter": 584.0,
       "width": 35.0,
-      "compatibleTireTypes": ["Mountain", "Offroad"]
+      "compatibilities": {
+        "tire": ["Mountain", "Offroad"]
+      }
     },
     {
-        "id": "b0c1d77f-b018-486d-a43d-5280f6c73a73",
-        "name": "Gravel Wheel 700c",
+      "id": "b0c1d77f-b018-486d-a43d-5280f6c73a73",
+      "name": "Gravel Wheel 700c",
       "type": "Gravel",
       "materialType": "Steel",
-      "boltType": "Quick Release",
+      "mountType": "Quick Release",
       "diameter": 622.0,
       "width": 30.0,
-      "compatibleTireTypes": ["Gravel", "Road"]
+      "compatibilities": {
+        "tire": ["Gravel", "Road"]
+      }
     }
   ],
   "tires": [
     {
-        "id": "d1afc255-400d-4b51-b6a4-a63de015bf05",
-        "name": "Road Tire",
+      "id": "d1afc255-400d-4b51-b6a4-a63de015bf05",
+      "name": "Road Tire",
       "type": "Road",
       "materialType": "Rubber",
-      "materialThickness": 2.0,
+      "thickness": 2.0,
       "diameter": 622.0,
       "width": 25.0,
       "treadType": "Slick",
       "treadDepth": 1.5
     },
     {
-        "id": "02c76517-f3a7-4427-9ea3-aac3ed728c0b",
-        "name": "Mountain Tire",
+      "id": "02c76517-f3a7-4427-9ea3-aac3ed728c0b",
+      "name": "Mountain Tire",
       "type": "Mountain",
       "materialType": "Rubber",
-      "materialThickness": 3.0,
+      "thickness": 3.0,
       "diameter": 584.0,
       "width": 35.0,
       "treadType": "Knobby",
       "treadDepth": 4.0
     },
     {
-        "id": "03619d7d-40e2-4cbe-b124-398649e23639",
-        "name": "Gravel Tire",
+      "id": "03619d7d-40e2-4cbe-b124-398649e23639",
+      "name": "Gravel Tire",
       "type": "Gravel",
       "materialType": "Rubber",
-      "materialThickness": 2.5,
+      "thickness": 2.5,
       "diameter": 622.0,
       "width": 30.0,
       "treadType": "Mixed",
@@ -179,60 +191,66 @@
   ],
   "innerTubes": [
     {
-        "id": "f9ffa9dc-6a6d-4fd2-8c0e-e484ca3a41e4",
-        "name": "Road Inner Tube",
+      "id": "f9ffa9dc-6a6d-4fd2-8c0e-e484ca3a41e4",
+      "name": "Road Inner Tube",
       "type": "Road",
       "valveType": "Presta",
       "materialType": "Butyl Rubber",
-      "materialThickness": 0.9,
+      "thickness": 0.9,
       "diameter": 622.0,
       "width": 25.0,
-      "pressureMin": 80.0,
-      "pressureMax": 120.0
+      "pressure": {
+        "min": 80.0, 
+        "max": 120.0
+      }
     },
     {
-        "id": "f499ad62-fc3f-4401-bd89-216d56c2e3bc",
-        "name": "Mountain Inner Tube",
+      "id": "f499ad62-fc3f-4401-bd89-216d56c2e3bc",
+      "name": "Mountain Inner Tube",
       "type": "Mountain",
       "valveType": "Schrader",
       "materialType": "Butyl Rubber",
-      "materialThickness": 1.2,
+      "thickness": 1.2,
       "diameter": 584.0,
       "width": 35.0,
-      "pressureMin": 30.0,
-      "pressureMax": 60.0
+      "pressure": {
+        "min": 30.0,
+        "max": 60.0
+      }
     },
     {
-        "id": "ca2ad805-8e71-41a7-b12c-88fb23e7c4a3",
-        "name": "Gravel Inner Tube",
+      "id": "ca2ad805-8e71-41a7-b12c-88fb23e7c4a3",
+      "name": "Gravel Inner Tube",
       "type": "Gravel",
       "valveType": "Presta",
       "materialType": "Butyl Rubber",
-      "materialThickness": 1.0,
+      "thickness": 1.0,
       "diameter": 622.0,
       "width": 30.0,
-      "pressureMin": 40.0,
-      "pressureMax": 80.0
+      "pressure": {
+        "min": 40.0,
+        "max": 80.0
+      }
     }
   ],
   "seatposts": [
     {
-        "id": "824db6f4-e518-489f-874d-0d86e51289b1",
-        "name": "Alloy Seatpost",
+      "id": "824db6f4-e518-489f-874d-0d86e51289b1",
+      "name": "Alloy Seatpost",
       "type": "Alloy",
       "materialType": "Aluminum",
       "diameter": 27.2
     },
     {
-        "id": "98854c88-5b68-4cd3-9dfe-11f96d43d9f6",
-        "name": "Carbon Seatpost",
+      "id": "98854c88-5b68-4cd3-9dfe-11f96d43d9f6",
+      "name": "Carbon Seatpost",
       "type": "Carbon",
       "materialType": "Carbon Fiber",
       "diameter": 31.6
     },
     {
-        "id": "7e2c31df-76ec-4a38-8568-486fb99d18e0",
-        "name": "Steel Seatpost",
+      "id": "7e2c31df-76ec-4a38-8568-486fb99d18e0",
+      "name": "Steel Seatpost",
       "type": "Steel",
       "materialType": "Steel",
       "diameter": 30.9
@@ -240,24 +258,24 @@
   ],
   "handlebars": [
     {
-        "id": "a31b5f30-7972-4369-9ba1-5a695b952d94",
-        "name": "Road Handlebar",
+      "id": "a31b5f30-7972-4369-9ba1-5a695b952d94",
+      "name": "Road Handlebar",
       "type": "Drop Bar",
       "materialType": "Aluminum",
       "width": 420.0,
       "diameter": 31.8
     },
     {
-        "id": "7613df51-1750-48c7-9d30-67b534e145a4",
-        "name": "Mountain Handlebar",
+      "id": "7613df51-1750-48c7-9d30-67b534e145a4",
+      "name": "Mountain Handlebar",
       "type": "Flat Bar",
       "materialType": "Aluminum",
       "width": 720.0,
       "diameter": 31.8
     },
     {
-        "id": "5400fa4c-f6bc-4bb6-b59f-8f4b0fcd624d",
-        "name": "Gravel Handlebar",
+      "id": "5400fa4c-f6bc-4bb6-b59f-8f4b0fcd624d",
+      "name": "Gravel Handlebar",
       "type": "Drop Bar",
       "materialType": "Steel",
       "width": 440.0,
@@ -266,22 +284,22 @@
   ],
   "bottomBrackets": [
     {
-        "id": "3d847125-df35-4316-84dd-896647fcc0de",
-        "name": "BSA Bottom Bracket",
+      "id": "3d847125-df35-4316-84dd-896647fcc0de",
+      "name": "BSA Bottom Bracket",
       "type": "Threaded",
       "diameter": 68.0,
       "threadSpacing": 1.37
     },
     {
-        "id": "41525d75-39d7-4707-9110-00db9d157b8c",
-        "name": "Pressfit Bottom Bracket",
+      "id": "41525d75-39d7-4707-9110-00db9d157b8c",
+      "name": "Pressfit Bottom Bracket",
       "type": "Press Fit",
       "diameter": 92.0,
       "threadSpacing": 0.0
     },
     {
-        "id": "2a388b10-f3c4-4dbc-b44c-fafa5900884e",
-        "name": "Threaded Steel Bottom Bracket",
+      "id": "2a388b10-f3c4-4dbc-b44c-fafa5900884e",
+      "name": "Threaded Steel Bottom Bracket",
       "type": "Threaded",
       "diameter": 73.0,
       "threadSpacing": 1.37
@@ -289,8 +307,8 @@
   ],
   "cranks": [
     {
-        "id": "2a25724c-52b1-467f-827f-36096d5a06f9",
-        "name": "Road Crank",
+      "id": "2a25724c-52b1-467f-827f-36096d5a06f9",
+      "name": "Road Crank",
       "type": "Road",
       "materialType": "Aluminum",
       "armWidth": 35.0,
@@ -298,8 +316,8 @@
       "armDepth": 10.0
     },
     {
-        "id": "84d4510a-6446-4bea-8218-cbaf5e16aa11",
-        "name": "Mountain Crank",
+      "id": "84d4510a-6446-4bea-8218-cbaf5e16aa11",
+      "name": "Mountain Crank",
       "type": "Mountain",
       "materialType": "Aluminum",
       "armWidth": 38.0,
@@ -307,8 +325,8 @@
       "armDepth": 12.0
     },
     {
-        "id": "9fd1186b-17df-4a0c-a8c3-d8ba8ccad342",
-        "name": "Gravel Crank",
+      "id": "9fd1186b-17df-4a0c-a8c3-d8ba8ccad342",
+      "name": "Gravel Crank",
       "type": "Gravel",
       "materialType": "Steel",
       "armWidth": 36.0,
@@ -318,8 +336,8 @@
   ],
   "pedals": [
     {
-        "id": "2704030c-f5ec-446c-b5ae-e1b207984ee4",
-        "name": "Road Pedal",
+      "id": "2704030c-f5ec-446c-b5ae-e1b207984ee4",
+      "name": "Road Pedal",
       "type": "Clipped",
       "materialType": "Aluminum",
       "baseWidth": 85.0,
@@ -329,8 +347,8 @@
       "threadSpacing": 1.0
     },
     {
-        "id": "fb54742d-4fe0-46a8-9e58-6b3a1bcc55fb",
-        "name": "Mountain Pedal",
+      "id": "fb54742d-4fe0-46a8-9e58-6b3a1bcc55fb",
+      "name": "Mountain Pedal",
       "type": "Flat",
       "materialType": "Aluminum",
       "baseWidth": 100.0,
@@ -340,8 +358,8 @@
       "threadSpacing": 1.0
     },
     {
-        "id": "9f6bbb22-50d2-4a83-9568-8b8148219b79",
-        "name": "Gravel Pedal",
+      "id": "9f6bbb22-50d2-4a83-9568-8b8148219b79",
+      "name": "Gravel Pedal",
       "type": "Hybrid",
       "materialType": "Steel",
       "baseWidth": 90.0,

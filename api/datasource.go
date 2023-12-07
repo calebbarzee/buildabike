@@ -1,12 +1,6 @@
-package main
+package api
 
 import (
-	"context"
-	"database/sql"
-	"fmt"
-	"log"
-	"time"
-
 	"github.com/lib/pq"
 )
 
@@ -15,5 +9,4 @@ var _ = pq.Error{}
 
 const (
 	dbName = "buildabike"
-	
 )
