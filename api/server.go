@@ -14,6 +14,7 @@ import (
 type DataSource interface {
 	GetBike(uuid.UUID) (*Bike, error)
 	SetBike(uuid.UUID, *Bike) error
+	DeleteBike(uuid.UUID) error
 
 	GetBikes() (map[uuid.UUID]*Bike, error)
 
@@ -44,6 +45,8 @@ func NewService() Service {
 	v1.GET("/bike/:id", s.getBike)
 	// /api/v1/bike/<id>
 	v1.POST("/bike/:id", s.postBike)
+	// /api/v1/bike/<id>
+	v1.DELETE("/bike/:id", s.deleteBike)
 
 	// /api/v1/bikes
 	v1.GET("/bikes", s.getBikes)
@@ -93,28 +96,6 @@ func (s Service) getBike(c *gin.Context) {
 	}
 }
 
-// getBikes responds with information about all bikes
-func (s Service) getBikes(c *gin.Context) {
-	// we declare err here and then defer its handling
-	// so that err can be set anywhere and then will be handled when we return
-	var err error
-	defer func() { handleError(c, err) }()
-
-	bikes, err := s.ds.GetBikes()
-	if err != nil {
-		return
-	}
-
-	bikesJSON, err := json.Marshal(bikes)
-	if err != nil {
-		return
-	}
-
-	if _, err = c.Writer.Write(bikesJSON); err != nil {
-		return
-	}
-}
-
 // postBike saves a bike
 func (s Service) postBike(c *gin.Context) {
 	// we declare err here and then defer its handling
@@ -141,6 +122,44 @@ func (s Service) postBike(c *gin.Context) {
 
 	err = s.ds.SetBike(bikeID, bike)
 	if err != nil {
+		return
+	}
+}
+
+// deleteBike removes a saved bike
+func (s Service) deleteBike(c *gin.Context) {
+	// we declare err here and then defer its handling
+	// so that err can be set anywhere and then will be handled when we return
+	var err error
+	defer func() { handleError(c, err) }()
+
+	paramBikeID := c.Params.ByName("id")
+	bikeID := uuid.MustParse(paramBikeID)
+
+	err = s.ds.DeleteBike(bikeID)
+	if err != nil {
+		return
+	}
+}
+
+// getBikes responds with information about all bikes
+func (s Service) getBikes(c *gin.Context) {
+	// we declare err here and then defer its handling
+	// so that err can be set anywhere and then will be handled when we return
+	var err error
+	defer func() { handleError(c, err) }()
+
+	bikes, err := s.ds.GetBikes()
+	if err != nil {
+		return
+	}
+
+	bikesJSON, err := json.Marshal(bikes)
+	if err != nil {
+		return
+	}
+
+	if _, err = c.Writer.Write(bikesJSON); err != nil {
 		return
 	}
 }

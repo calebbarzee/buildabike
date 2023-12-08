@@ -31,12 +31,21 @@ func (ds LocalDataSource) GetBike(id uuid.UUID) (*Bike, error) {
 	}
 	return bike, nil
 }
-
 func (ds *LocalDataSource) SetBike(id uuid.UUID, bike *Bike) error {
 	bike.UUID = id
 	ds.bikes[id] = bike
 	return nil
 }
+func (ds *LocalDataSource) DeleteBike(id uuid.UUID) error {
+	_, ok := ds.bikes[id]
+	if !ok {
+		return errorBikeNotFound
+	}
+
+	delete(ds.bikes, id)
+	return nil
+}
+
 func (ds LocalDataSource) GetBikes() (map[uuid.UUID]*Bike, error) {
 	return ds.bikes, nil
 }
