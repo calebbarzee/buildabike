@@ -1,14 +1,9 @@
 import SwiftUI
 
-struct BikeEntry: Identifiable {
-    let id: UUID
-    var bike: Bike
-}
+import SwiftUI
 
 struct HomePageView: View {
-    @State private var bikes: [UUID: Bike] = [:]
-    @State private var bike: Bike
-    @State private var selectedBike: Bike? = nil
+    @State private var bikes: [Bike] = []
 
     var body: some View {
         VStack {
@@ -18,16 +13,16 @@ struct HomePageView: View {
                     .font(.largeTitle)
                     .padding()
                 List {
-                    for (id, bike) in $bikes {
-                        NavigationLink(destination: BikeDetailView(bike: $bike)) {
+                    ForEach(bikes, id: \.id) { bike in
+                        NavigationLink(destination: BikeDetailView(bike: bike)) {
                             Text(bike.name)
-                            }
                         }
+                    }
                     .onDelete(perform: deleteBike)
-                    
+
                     Button(action: {
                         let newBike = Bike(id: UUID(), name: "New Bike", parts: [])
-                        bikes.append(newBike) 
+                        bikes.append(newBike)
                     }) {
                         Text("+")
                             .font(.title)
@@ -42,18 +37,16 @@ struct HomePageView: View {
                 case .success(let loadedBikes):
                     self.bikes = loadedBikes
                 case .failure(let error):
-                    // Handle error here, e.g., show an alert
                     print("Error loading bikes: \(error)")
                 }
             }
         }
     }
+
     func deleteBike(at offsets: IndexSet) {
         bikes.remove(atOffsets: offsets)
     }
-
 }
-
 
 #Preview {
     HomePageView()

@@ -10,7 +10,7 @@ protocol PartProtocol: Decodable, Identifiable {
 struct Bike: Decodable, Identifiable {
     let id: UUID
     var name: String
-    var parts: [Part]
+    var parts: [Part]?
 }
 
 struct Part: Decodable, Identifiable {

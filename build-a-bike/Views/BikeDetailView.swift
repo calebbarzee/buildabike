@@ -2,15 +2,16 @@ import SwiftUI
 
 
 struct BikeDetailView: View {
-    @Binding var bike: Bike
+    var bike: Bike
     
     var body: some View {
         VStack {
-            TextField("Enter bike name", text: $bike.name)
+//            TextField("Enter bike name", text: bike.name)
+            Text(bike.name)
                 .font(.title)
                 .padding()
 
-            List(bike.parts) { part in
+            List(bike.parts ?? []) { part in
                 Text(part.name)
             }
 
@@ -37,3 +38,5 @@ struct BikeDetailView: View {
         .navigationTitle("Bike Details")
     }
 }
+
+// add http update method to change bike name

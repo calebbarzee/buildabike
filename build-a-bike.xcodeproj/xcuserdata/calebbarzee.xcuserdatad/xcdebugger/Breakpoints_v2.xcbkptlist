@@ -18,6 +18,38 @@
             endingLineNumber = "33"
             landmarkName = "loadBikes(completion:)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "544B3157-86FC-46D0-9934-29C5E03022EE - 6aeedaf7a7e72f9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, build_a_bike.FetchDataError&gt;) -&gt; () in build_a_bike.loadBikes(completion: (Swift.Result&lt;Swift.Array&lt;build_a_bike.Bike&gt;, build_a_bike.FetchDataError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "build-a-bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebbarzee/Documents/1_Projects/buildabike/build-a-bike/Model/LoadData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "544B3157-86FC-46D0-9934-29C5E03022EE - 6aeedaf7a7e72f9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, build_a_bike.FetchDataError&gt;) -&gt; () in build_a_bike.loadBikes(completion: (Swift.Result&lt;Swift.Array&lt;build_a_bike.Bike&gt;, build_a_bike.FetchDataError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "build-a-bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebbarzee/Documents/1_Projects/buildabike/build-a-bike/Model/LoadData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "288">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
