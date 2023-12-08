@@ -25,7 +25,7 @@ struct BikeDetailView: View {
             }
             .padding()
 
-            NavigationLink(destination: PhysicsCalculationsView(bike: bike)) {
+            NavigationLink(destination: PhysicsCalcView(bike: bike)) {
                 Text("Physics Calculations")
                     .foregroundColor(.white)
                     .padding()
