@@ -9,41 +9,41 @@ struct SelectorIconView: View {
                     .font(.title)
                 GeometryReader { geometry in
                     ZStack {
-                        Bicycle()
+                        BicycleIcon()
                             .fill(Color.gray)
-                        Seat()
+                        SeatSelector()
                             .fill(Color.clear)
-                            .contentShape(Seat())
+                            .contentShape(SeatSelector())
                             .onTapGesture {
                                 self.partTypeSelected = "Seat"
                             }
-                        Handlebar()
+                        HandlebarSelector()
                             .fill(Color.clear)
-                            .contentShape(Handlebar())
+                            .contentShape(HandlebarSelector())
                             .onTapGesture {
                                 self.partTypeSelected = "Handlebar"
                             }
-                        Frame()
+                        FrameSelector()
                             .fill(Color.clear)
-                            .contentShape(Frame())
+                            .contentShape(FrameSelector())
                             .onTapGesture {
                                 self.partTypeSelected = "Frame"
                             }
-                        Fork()
+                        ForkSelector()
                             .fill(Color.clear)
-                            .contentShape(Fork())
+                            .contentShape(ForkSelector())
                             .onTapGesture {
                                 self.partTypeSelected = "Fork"
                             }
-                        Wheels()
+                        WheelsSelector()
                             .fill(Color.clear)
-                            .contentShape(Wheels())
+                            .contentShape(WheelsSelector())
                             .onTapGesture {
                                 self.partTypeSelected = "Wheels"
                             }
-                        Drivetrain()
+                        DrivetrainSelector()
                             .fill(Color.clear)
-                            .contentShape(Drivetrain())
+                            .contentShape(DrivetrainSelector())
                             .onTapGesture {
                                 self.partTypeSelected = "Drivetrain"
                             }

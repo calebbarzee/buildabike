@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FindPartView: View {
     var bike: Bike
+    @State private var parts: [Part] = []
     @State private var searchQuery = ""
     @State private var partTypeSelected: String = "None" // New State for part selection
     @State private var filteredParts: [String: [Part]] = [:]
@@ -30,6 +31,17 @@ struct FindPartView: View {
         }
         .navigationTitle("Find a Part for \(bike.name)")
         .onAppear(perform: { filterParts(searchQuery) })
+        .onAppear {
+            loadBikeParts { result in
+                switch result {
+                case .success(let loadedBikes):
+                    self.parts = loadedBikes
+                case .failure(let error):
+                    // Handle error here, e.g., show an alert
+                    print("Error loading bikes: \(error)")
+                }
+            }
+        }
     }
 
     func filterParts(_ query: String) {

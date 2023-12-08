@@ -2,8 +2,7 @@ import SwiftUI
 
 struct HomePageView: View {
     @State private var bikes: [Bike] = []
-    @State private var isAddingBike = false
-    @State private var editingBikeID: UUID?
+    @State private var selectedBike: Bike? = nil
 
     var body: some View {
         VStack {
@@ -13,28 +12,16 @@ struct HomePageView: View {
                     .font(.largeTitle)
                     .padding()
                 List {
-                    ForEach(bikes) { bike in
-                        if editingBikeID == bike.id {
-                            TextField("Enter bike name", text: Binding(
-                                get: { bike.name },
-                                set: { newName in
-                                    if let index = bikes.firstIndex(where: { $0.id == bike.id }) {
-                                        bikes[index].name = newName
-                                    }
-                                }
-                            ))
-                        } else {
-                            // Using NavigationLink to navigate to the detail view
-                            NavigationLink(destination: BikeDetailView(bike: bike)) {
-                                Text(bike.name)
+                    ForEach($bikes, id: \.id) { $bike in
+                        NavigationLink(destination: BikeDetailView(bike: $bike)) {
+                            Text(bike.name)
                             }
                         }
-                    }
                     .onDelete(perform: deleteBike)
-
+                    
                     Button(action: {
                         let newBike = Bike(id: UUID(), name: "New Bike", parts: [])
-                        bikes.append(newBike)
+                        bikes.append(newBike) 
                     }) {
                         Text("+")
                             .font(.title)
@@ -43,13 +30,24 @@ struct HomePageView: View {
                 }
             }
         }
+        .onAppear {
+            loadBikes { result in
+                switch result {
+                case .success(let loadedBikes):
+                    self.bikes = loadedBikes
+                case .failure(let error):
+                    // Handle error here, e.g., show an alert
+                    print("Error loading bikes: \(error)")
+                }
+            }
+        }
     }
-
     func deleteBike(at offsets: IndexSet) {
         bikes.remove(atOffsets: offsets)
     }
 
 }
+
 
 #Preview {
     HomePageView()

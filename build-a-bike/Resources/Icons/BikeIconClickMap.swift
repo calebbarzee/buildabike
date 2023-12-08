@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Seat: Shape {
+struct SeatSelector: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let width = rect.size.width
@@ -14,7 +14,7 @@ struct Seat: Shape {
         return path
     }
 }
-struct Drivetrain: Shape {
+struct DrivetrainSelector: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let width = rect.size.width
@@ -41,7 +41,7 @@ struct Drivetrain: Shape {
         return path
     }
 }
-struct Wheels: Shape {
+struct WheelsSelector: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let width = rect.size.width
@@ -83,7 +83,7 @@ struct Wheels: Shape {
         return path
     }
 }
-struct Handlebar: Shape {
+struct HandlebarSelector: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let width = rect.size.width
@@ -97,7 +97,7 @@ struct Handlebar: Shape {
         return path
     }
 }
-struct Fork: Shape {
+struct ForkSelector: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let width = rect.size.width
@@ -113,7 +113,7 @@ struct Fork: Shape {
         return path
     }
 }
-struct Frame: Shape {
+struct FrameSelector: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let width = rect.size.width

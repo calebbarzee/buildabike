@@ -2,11 +2,11 @@ import SwiftUI
 
 
 struct BikeDetailView: View {
-    var bike: Bike
-
+    @Binding var bike: Bike
+    
     var body: some View {
         VStack {
-            Text(bike.name)
+            TextField("Enter bike name", text: $bike.name)
                 .font(.title)
                 .padding()
 
