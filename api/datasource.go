@@ -32,7 +32,7 @@ func (ds LocalDataSource) GetBike(id uuid.UUID) (*Bike, error) {
 	return bike, nil
 }
 func (ds *LocalDataSource) SetBike(id uuid.UUID, bike *Bike) error {
-	bike.UUID = id
+	bike.ID = id
 	ds.bikes[id] = bike
 	return nil
 }

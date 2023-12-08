@@ -4,8 +4,9 @@ struct FindPartView: View {
     var bike: Bike
     @State private var parts: [Part] = []
     @State private var searchQuery = ""
-    @State private var partTypeSelected: String = "None" // New State for part selection
+    @State private var partTypeSelected: String = "None"
     @State private var filteredParts: [String: [Part]] = [:]
+    @State private var isLoading = false // Loading state
 
     var body: some View {
         VStack {
@@ -17,12 +18,20 @@ struct FindPartView: View {
             SelectorIconView(partTypeSelected: $partTypeSelected)
                 .onChange(of: partTypeSelected) { _ in filterParts(searchQuery) }
 
-            List {
-                ForEach(filteredParts.keys.sorted(), id: \.self) { category in
-                    if partTypeSelected == "None" || partTypeSelected == category {
-                        Section(header: Text(category)) {
-                            ForEach(filteredParts[category] ?? []) { part in
-                                Text(part.name)
+            if isLoading {
+                ProgressView()
+            } else {
+                List {
+                    if filteredParts.isEmpty {
+                        Text("No parts available").foregroundColor(.gray)
+                    } else {
+                        ForEach(filteredParts.keys.sorted(), id: \.self) { category in
+                            if partTypeSelected == "None" || partTypeSelected == category {
+                                Section(header: Text(category)) {
+                                    ForEach(filteredParts[category] ?? []) { part in
+                                        Text(part.name)
+                                    }
+                                }
                             }
                         }
                     }
@@ -30,25 +39,27 @@ struct FindPartView: View {
             }
         }
         .navigationTitle("Find a Part for \(bike.name)")
-        .onAppear(perform: { filterParts(searchQuery) })
         .onAppear {
+            isLoading = true
             loadBikeParts { result in
+                isLoading = false
                 switch result {
-                case .success(let loadedBikes):
-                    self.parts = loadedBikes
+                case .success(let loadedParts):
+                    self.parts = loadedParts
+                    self.filterParts(self.searchQuery)
                 case .failure(let error):
-                    // Handle error here, e.g., show an alert
-                    print("Error loading bikes: \(error)")
+                    print("Error loading parts: \(error)")
+                    // Implement more sophisticated error handling here
                 }
             }
         }
     }
 
     func filterParts(_ query: String) {
-        let filtered = bike.parts.filter { part in
-            (query.isEmpty || part.name.contains(query)) &&
-            (partTypeSelected == "None" || partTypeSelected == part.type)
+        let filtered = parts.filter { part in
+            (query.isEmpty || part.name.lowercased().contains(query.lowercased()))
+//            && (partTypeSelected == "None" || partTypeSelected == part.type)
         }
-        filteredParts = Dictionary(grouping: filtered, by: { $0.type })
+//        filteredParts = Dictionary(grouping: filtered, by: { $0.type })
     }
 }

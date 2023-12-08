@@ -5,7 +5,8 @@ enum FetchDataError: Error {
     case invalidURL
     case networkError(Error)
     case invalidResponse
-    case dataConversionError
+    case stringDataConversionError
+    case jsonDataConversionError
 }
 
 func fetchData(from urlString: String, completion: @escaping (Result<String, FetchDataError>) -> Void) {
@@ -32,7 +33,7 @@ func fetchData(from urlString: String, completion: @escaping (Result<String, Fet
             if let result = String(data: data, encoding: .utf8) {
                 completion(.success(result))
             } else {
-                completion(.failure(.dataConversionError))
+                completion(.failure(.stringDataConversionError))
             }
         }
     }

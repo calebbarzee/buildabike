@@ -1,7 +1,13 @@
 import SwiftUI
 
+struct BikeEntry: Identifiable {
+    let id: UUID
+    var bike: Bike
+}
+
 struct HomePageView: View {
-    @State private var bikes: [Bike] = []
+    @State private var bikes: [UUID: Bike] = [:]
+    @State private var bike: Bike
     @State private var selectedBike: Bike? = nil
 
     var body: some View {
@@ -12,7 +18,7 @@ struct HomePageView: View {
                     .font(.largeTitle)
                     .padding()
                 List {
-                    ForEach($bikes, id: \.id) { $bike in
+                    for (id, bike) in $bikes {
                         NavigationLink(destination: BikeDetailView(bike: $bike)) {
                             Text(bike.name)
                             }

@@ -12,7 +12,7 @@ func loadBikeParts(completion: @escaping (Result<[Part], FetchDataError>) -> Voi
                 let bikeParts = try decoder.decode([Part].self, from: data)
                 completion(.success(bikeParts))
             } catch {
-                completion(.failure(.dataConversionError))
+                completion(.failure(.jsonDataConversionError))
             }
 
         case .failure(let error):
@@ -22,7 +22,7 @@ func loadBikeParts(completion: @escaping (Result<[Part], FetchDataError>) -> Voi
 }
 
 
-func loadBikes(completion: @escaping (Result<[Bike], FetchDataError>) -> Void) {
+func loadBikes(completion: @escaping (Result<[UUID: Bike], FetchDataError>) -> Void) {
     let urlString = "http://192.168.1.45:8080/api/v1/bikes"
 
     fetchData(from: urlString) { result in
@@ -31,10 +31,11 @@ func loadBikes(completion: @escaping (Result<[Bike], FetchDataError>) -> Void) {
             do {
                 let data = Data(jsonString.utf8)
                 let decoder = JSONDecoder()
-                let bikes = try decoder.decode([Bike].self, from: data)
+                let bikes = try decoder.decode([UUID: Bike].self, from: data)
                 completion(.success(bikes))
             } catch {
-                completion(.failure(.dataConversionError))
+                completion(.failure(.jsonDataConversionError))
+                print("Error info: \(error)")
             }
 
         case .failure(let error):

@@ -4,9 +4,9 @@ import "github.com/google/uuid"
 
 // Bike represents a bike with a UUID, name, and array of parts
 type Bike struct {
-	UUID  uuid.UUID
-	Name  string
-	Parts []Identifiable
+	ID    uuid.UUID      `json:"id"`
+	Name  string         `json:"name,omitempty"`
+	Parts []Identifiable `json:"parts,omitempty"`
 }
 
 type Identifiable interface {
@@ -23,10 +23,10 @@ type Types []string
 
 // Part is a general struct for bike parts
 type Part struct {
-	ID              uuid.UUID
-	Name            string
-	Type            string
-	Compatibilities CategorizedTypes
+	ID              uuid.UUID        `json:"id"`
+	Name            string           `json:"name,omitempty"`
+	Type            string           `json:"type,omitempty"`
+	Compatibilities CategorizedTypes `json:"compatibilities,omitempty"`
 }
 
 func (p Part) GetID() uuid.UUID                       { return p.ID }

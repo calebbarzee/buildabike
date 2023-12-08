@@ -1,6 +1,12 @@
 // all float sizes represent mm
 import Foundation
 
+protocol PartProtocol: Decodable, Identifiable {
+    var id: UUID { get }
+    var name: String { get }
+    var compatibilities: [String: [String]]? { get }
+}
+
 struct Bike: Decodable, Identifiable {
     let id: UUID
     var name: String
@@ -10,8 +16,7 @@ struct Bike: Decodable, Identifiable {
 struct Part: Decodable, Identifiable {
     let id: UUID
     let name: String
-    let type: String
-    let compatibilities: [String: [String]]
+    let compatibilities: [String: [String]]?
 }
 
 struct Range: Decodable {
@@ -19,8 +24,12 @@ struct Range: Decodable {
     let max: Double?
 }
 
-struct Frame: Decodable {
+struct Frame: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+
     let seatpostDiameter: Double?
     let bottomBracketType: String?
     let bottomBracketDiameter: Double?
@@ -28,8 +37,12 @@ struct Frame: Decodable {
     let rearWheelDiameter: Double?
 }
 
-struct Fork: Decodable {
+struct Fork: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let frontWheelDiameter: Double?
     let steeringTubeDiameter: Double?
     let armLength: Double?
@@ -38,23 +51,35 @@ struct Fork: Decodable {
     let brakeMountType: String?
 }
 
-struct Headset: Decodable {
+struct Headset: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let angle: Double?
     let length: Double?
     let handlebarDiameter: Range?
     let steeringTubeDiameter: Double?
 }
 
-struct Wheel: Decodable {
+struct Wheel: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let mountType: String?
     let diameter: Double?
     let width: Double?
 }
 
-struct Tire: Decodable {
+struct Tire: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let thickness: Double?
     let diameter: Double?
     let width: Double?
@@ -62,8 +87,12 @@ struct Tire: Decodable {
     let treadDepth: Double?
 }
 
-struct InnerTube: Decodable {
+struct InnerTube: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let valveType: String?
     let thickness: Double?
     let diameter: Double?
@@ -71,32 +100,52 @@ struct InnerTube: Decodable {
     let pressure: Range?
 }
 
-struct SeatPost: Decodable {
+struct SeatPost: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let diameter: Double?
 }
 
-struct Handlebar: Decodable {
+struct Handlebar: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let width: Double?
     let diameter: Double?
 }
 
-struct BottomBracket: Decodable {
+struct BottomBracket: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let diameter: Double?
     let threadSpacing: Double?
 }
 
-struct Crank: Decodable {
+struct Crank: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let armWidth: Double?
     let armLength: Double?
     let armDepth: Double?
 }
 
-struct Pedal: Decodable {
+struct Pedal: Decodable, PartProtocol {
     let part: Part
+    var id: UUID { part.id }
+    var name: String { part.name }
+    var compatibilities: [String: [String]]? { part.compatibilities }
+    
     let baseWidth: Double?
     let baseLength: Double?
     let gripType: String?
