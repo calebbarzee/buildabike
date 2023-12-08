@@ -13,7 +13,7 @@ RUN go mod download
 # Copy the source code. Note the slash at the end, as explained in
 # https://docs.docker.com/engine/reference/builder/#copy
 COPY *.go ./
-
+COPY Resources/bikeParts.json ./Resources/bikeParts.json
 # Build
 RUN CGO_ENABLED=0 GOOS=linux go build -o /buildabike-api
 
@@ -27,7 +27,7 @@ RUN go test -v ./...
 FROM gcr.io/distroless/base-debian11 AS build-release-stage
 
 # Set destination for COPY
-WORKDIR /
+WORKDIR /api
 
 # copy binary
 COPY --from=build-stage /buildabike-api /buildabike-api
@@ -38,5 +38,4 @@ COPY --from=build-stage /buildabike-api /buildabike-api
 # the application is going to listen on by default.
 # https://docs.docker.com/engine/reference/builder/#expose
 EXPOSE 8080
-USER nonroot:nonroot
 ENTRYPOINT ["/buildabike-api"]

@@ -14,6 +14,9 @@ import (
 type DataSource interface {
 	GetBike(uuid.UUID) (*Bike, error)
 	SetBike(uuid.UUID, *Bike) error
+
+	GetBikes() (map[uuid.UUID]*Bike, error)
+
 	GetParts(string) (*Catalog, error)
 }
 
@@ -40,7 +43,10 @@ func NewService() Service {
 	// /api/v1/bike/<id>
 	v1.GET("/bike/:id", s.getBike)
 	// /api/v1/bike/<id>
-	v1.POST("/bike/:id", s.getBike)
+	v1.POST("/bike/:id", s.postBike)
+
+	// /api/v1/bikes
+	v1.GET("/bikes", s.getBikes)
 
 	// /api/v1/parts
 	v1.GET("/parts", s.getParts)
@@ -57,6 +63,9 @@ func (s Service) Run() error {
 
 // getHealth responds with a basic health check.
 func (s Service) getHealth(c *gin.Context) {
+	if _, err := c.Writer.Write([]byte("status:ok")); err != nil {
+		return
+	}
 	c.Status(http.StatusOK)
 }
 
@@ -80,6 +89,28 @@ func (s Service) getBike(c *gin.Context) {
 	}
 
 	if _, err = c.Writer.Write(bikeJSON); err != nil {
+		return
+	}
+}
+
+// getBikes responds with information about all bikes
+func (s Service) getBikes(c *gin.Context) {
+	// we declare err here and then defer its handling
+	// so that err can be set anywhere and then will be handled when we return
+	var err error
+	defer func() { handleError(c, err) }()
+
+	bikes, err := s.ds.GetBikes()
+	if err != nil {
+		return
+	}
+
+	bikesJSON, err := json.Marshal(bikes)
+	if err != nil {
+		return
+	}
+
+	if _, err = c.Writer.Write(bikesJSON); err != nil {
 		return
 	}
 }

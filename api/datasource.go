@@ -20,6 +20,7 @@ func NewLocalDataSource() (*LocalDataSource, error) {
 	}
 	return &LocalDataSource{
 		catalog: *c,
+		bikes:   map[uuid.UUID]*Bike{},
 	}, nil
 }
 
@@ -32,8 +33,12 @@ func (ds LocalDataSource) GetBike(id uuid.UUID) (*Bike, error) {
 }
 
 func (ds *LocalDataSource) SetBike(id uuid.UUID, bike *Bike) error {
+	bike.UUID = id
 	ds.bikes[id] = bike
 	return nil
+}
+func (ds LocalDataSource) GetBikes() (map[uuid.UUID]*Bike, error) {
+	return ds.bikes, nil
 }
 
 func (ds LocalDataSource) GetParts(category string) (*Catalog, error) {
