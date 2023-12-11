@@ -16,6 +16,8 @@
 		3F78112F2B2174710037370F /* BikeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F78112E2B2174710037370F /* BikeDetailView.swift */; };
 		3F86905C2B17C3D300ECDBB6 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86905B2B17C3D300ECDBB6 /* LoadData.swift */; };
 		3F86905E2B17C3FC00ECDBB6 /* CheckCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86905D2B17C3FC00ECDBB6 /* CheckCompatibility.swift */; };
+		3F8837B82B238CDC00A82C09 /* loadJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8837B72B238CDC00A82C09 /* loadJSON.swift */; };
+		3F8837BA2B238D2500A82C09 /* bikeParts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F8837B92B238D2500A82C09 /* bikeParts.json */; };
 		3F981FE12B215A04007DC190 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F981FD62B213664007DC190 /* HomePageView.swift */; };
 		3FDACAC82B2181C70097DEE2 /* BikeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACAC72B2181C70097DEE2 /* BikeIcon.swift */; };
 		3FDACACA2B2181F30097DEE2 /* BikeIconClickMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACAC92B2181F30097DEE2 /* BikeIconClickMap.swift */; };
@@ -36,6 +38,8 @@
 		3F78112E2B2174710037370F /* BikeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeDetailView.swift; sourceTree = "<group>"; };
 		3F86905B2B17C3D300ECDBB6 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		3F86905D2B17C3FC00ECDBB6 /* CheckCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCompatibility.swift; sourceTree = "<group>"; };
+		3F8837B72B238CDC00A82C09 /* loadJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadJSON.swift; sourceTree = "<group>"; };
+		3F8837B92B238D2500A82C09 /* bikeParts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bikeParts.json; sourceTree = "<group>"; };
 		3F981FD62B213664007DC190 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		3FDACAC72B2181C70097DEE2 /* BikeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeIcon.swift; sourceTree = "<group>"; };
 		3FDACAC92B2181F30097DEE2 /* BikeIconClickMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeIconClickMap.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				3F86905B2B17C3D300ECDBB6 /* LoadData.swift */,
 				3F6543642B22CD2800CBC964 /* HTTPRequest.swift */,
 				3F6543832B22E21F00CBC964 /* BikeModel.swift */,
+				3F8837B72B238CDC00A82C09 /* loadJSON.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 		3F981FE02B213C68007DC190 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3F8837B92B238D2500A82C09 /* bikeParts.json */,
 				3FDACAC62B2181A20097DEE2 /* Icons */,
 			);
 			path = Resources;
@@ -194,6 +200,7 @@
 			files = (
 				3F36BFBF2B17C25100C39AC9 /* Preview Assets.xcassets in Resources */,
 				3F36BFBC2B17C25100C39AC9 /* Assets.xcassets in Resources */,
+				3F8837BA2B238D2500A82C09 /* bikeParts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +220,7 @@
 				3F86905E2B17C3FC00ECDBB6 /* CheckCompatibility.swift in Sources */,
 				3FDACACE2B2186AF0097DEE2 /* FindPartView.swift in Sources */,
 				3F6543842B22E21F00CBC964 /* BikeModel.swift in Sources */,
+				3F8837B82B238CDC00A82C09 /* loadJSON.swift in Sources */,
 				3FDACAC82B2181C70097DEE2 /* BikeIcon.swift in Sources */,
 				3F981FE12B215A04007DC190 /* HomePageView.swift in Sources */,
 				3FDACACC2B2182350097DEE2 /* SelectorIconView.swift in Sources */,

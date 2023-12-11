@@ -1,12 +1,13 @@
+import Foundation
 import SwiftUI
 
 struct FindPartView: View {
-    var bike: Bike
-    @State private var parts: [Part] = []
+    @Binding var bike: Bike
     @State private var searchQuery = ""
-    @State private var partTypeSelected: String = "None"
-    @State private var filteredParts: [String: [Part]] = [:]
-    @State private var isLoading = false // Loading state
+    @State private var partTypeSelected: BikePartType = .frame // Adjust to BikePartType
+    @State private var isLoading = false
+
+    let bikeParts: BikeParts = loadBikeParts() ?? BikeParts(frames: [], forks: [], headsets: [], wheels: [], tires: [], innerTubes: [], seatposts: [], handlebars: [], bottomBrackets: [], cranks: [], pedals: [])
 
     var body: some View {
         VStack {
@@ -15,51 +16,41 @@ struct FindPartView: View {
                 .border(Color.gray, width: 1)
                 .onChange(of: searchQuery, perform: filterParts)
 
-            SelectorIconView(partTypeSelected: $partTypeSelected)
-                .onChange(of: partTypeSelected) { _ in filterParts(searchQuery) }
+            Picker("Select Part Type", selection: $partTypeSelected) {
+                // Add Picker items for each part type
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
 
             if isLoading {
                 ProgressView()
             } else {
                 List {
-                    if filteredParts.isEmpty {
-                        Text("No parts available").foregroundColor(.gray)
-                    } else {
-                        ForEach(filteredParts.keys.sorted(), id: \.self) { category in
-                            if partTypeSelected == "None" || partTypeSelected == category {
-                                Section(header: Text(category)) {
-                                    ForEach(filteredParts[category] ?? []) { part in
-                                        Text(part.name)
-                                    }
+                    Section {
+                        ForEach(filteredParts(), id: \.id) { part in
+                            Text(part.name)
+                                .padding()
+                                .onTapGesture {
+                                    // Handle part selection
+                                    addPartToBike(part: part)
                                 }
-                            }
                         }
                     }
                 }
             }
         }
         .navigationTitle("Find a Part for \(bike.name)")
-        .onAppear {
-            isLoading = true
-            loadBikeParts { result in
-                isLoading = false
-                switch result {
-                case .success(let loadedParts):
-                    self.parts = loadedParts
-                    self.filterParts(self.searchQuery)
-                case .failure(let error):
-                    print("Error loading parts: \(error)")
-                    // Implement more sophisticated error handling here
-                }
-            }
-        }
     }
 
     func filterParts(_ query: String) {
-        let filtered = parts.filter { part in
-            (query.isEmpty || part.name.lowercased().contains(query.lowercased()))
-//            && (partTypeSelected == "None" || partTypeSelected == part.type)
-        }
-//        filteredParts = Dictionary(grouping: filtered, by: { $0.type })
+        // Implement logic to filter parts based on searchQuery and partTypeSelected
+    }
+
+    func filteredParts() -> [BikePart] {
+        // Implement logic to return filtered parts based on partTypeSelected and searchQuery
+    }
+
+    func addPartToBike(part: BikePart) {
+        // Implement logic to add selected part to bike
     }
 }
