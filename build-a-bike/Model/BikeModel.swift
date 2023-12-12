@@ -4,7 +4,7 @@ import Foundation
 struct Bike: Codable, Identifiable {
    let id: UUID
    var name: String
-    var parts: [UUID]?
+    var parts: [UUID]
 }
 
 struct BicycleComponents: Decodable {
