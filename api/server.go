@@ -90,6 +90,7 @@ func (s Service) getBike(c *gin.Context) {
 		return
 	}
 
+	c.Writer.Header().Add("Content-Type", "application/json")
 	if _, err = c.Writer.Write(bikeJSON); err != nil {
 		return
 	}
@@ -158,6 +159,7 @@ func (s Service) getBikes(c *gin.Context) {
 		return
 	}
 
+	c.Writer.Header().Add("Content-Type", "application/json")
 	if _, err = c.Writer.Write(bikesJSON); err != nil {
 		return
 	}
@@ -181,6 +183,7 @@ func (s Service) getParts(c *gin.Context) {
 		return
 	}
 
+	c.Writer.Header().Add("Content-Type", "application/json")
 	if _, err = c.Writer.Write(partsJSON); err != nil {
 		return
 	}

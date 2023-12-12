@@ -4,9 +4,9 @@ import "github.com/google/uuid"
 
 // Bike represents a bike with a UUID, name, and array of parts
 type Bike struct {
-	ID    uuid.UUID      `json:"id"`
-	Name  string         `json:"name"`
-	Parts []Identifiable `json:"parts"`
+	ID    uuid.UUID   `json:"id"`
+	Name  string      `json:"name"`
+	Parts []uuid.UUID `json:"parts"`
 }
 
 type Identifiable interface {
