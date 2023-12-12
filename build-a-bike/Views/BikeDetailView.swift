@@ -2,12 +2,11 @@ import SwiftUI
 
 
 struct BikeDetailView: View {
-    var bike: Bike
+    @Binding var bike: Bike
     
     var body: some View {
         VStack {
-//            TextField("Enter bike name", text: bike.name)
-            Text(bike.name)
+            TextField("Enter bike name", text: $bike.name)
                 .font(.title)
                 .padding()
 
@@ -17,7 +16,7 @@ struct BikeDetailView: View {
 
             Spacer()
 
-            NavigationLink(destination: FindPartView(bike: bike)) {
+            NavigationLink(destination: FindPartView(bike: $bike)) {
                 Text("Find a Part")
                     .foregroundColor(.white)
                     .padding()

@@ -5,8 +5,8 @@ import "github.com/google/uuid"
 // Bike represents a bike with a UUID, name, and array of parts
 type Bike struct {
 	ID    uuid.UUID      `json:"id"`
-	Name  string         `json:"name,omitempty"`
-	Parts []Identifiable `json:"parts,omitempty"`
+	Name  string         `json:"name"`
+	Parts []Identifiable `json:"parts"`
 }
 
 type Identifiable interface {
@@ -26,7 +26,7 @@ type Part struct {
 	ID              uuid.UUID        `json:"id"`
 	Name            string           `json:"name,omitempty"`
 	Type            string           `json:"type,omitempty"`
-	Compatibilities CategorizedTypes `json:"compatibilities,omitempty"`
+	Compatibilities CategorizedTypes `json:"compatibilities"`
 }
 
 func (p Part) GetID() uuid.UUID                       { return p.ID }
@@ -94,7 +94,7 @@ type InnerTube struct {
 	Thickness float64 `json:"thickness,omitempty"`
 	Diameter  float64 `json:"diameter,omitempty"`
 	Width     float64 `json:"width,omitempty"`
-	Preasure  Range   `json:"preasure,omitempty"`
+	Pressure  Range   `json:"pressure,omitempty"`
 }
 
 // SeatPost represents a bike seatPost

@@ -3,7 +3,6 @@ package api
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -29,7 +28,7 @@ type Service struct {
 func NewService() Service {
 	ds, err := NewLocalDataSource()
 	if err != nil {
-		fmt.Print(err)
+		panic(err)
 	}
 	s := Service{
 		ds: ds,

@@ -13,17 +13,14 @@ struct HomePageView: View {
                     .font(.largeTitle)
                     .padding()
                 List {
-                    ForEach(bikes, id: \.id) { bike in
-                        NavigationLink(destination: BikeDetailView(bike: bike)) {
+                    ForEach($bikes, id: \.id) { $bike in
+                        NavigationLink(destination: BikeDetailView(bike: $bike)) {
                             Text(bike.name)
                         }
                     }
                     .onDelete(perform: deleteBike)
 
-                    Button(action: {
-                        let newBike = Bike(id: UUID(), name: "New Bike", parts: [])
-                        bikes.append(newBike)
-                    }) {
+                    Button(action: addBike) {
                         Text("+")
                             .font(.title)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -32,7 +29,7 @@ struct HomePageView: View {
             }
         }
         .onAppear {
-            loadBikes { result in
+            fetchBikes(from: "\(localIP)/api/v1/bikes") { result in
                 switch result {
                 case .success(let loadedBikes):
                     self.bikes = loadedBikes
@@ -45,6 +42,19 @@ struct HomePageView: View {
 
     func deleteBike(at offsets: IndexSet) {
         bikes.remove(atOffsets: offsets)
+    }
+    func addBike() {
+        let newBike = Bike(id: UUID(), name: "New Bike", parts: [])
+        let url = "\(localIP)/api/v1/bike/\(newBike.id)"
+        postBike(newBike, to: url) { result in
+            switch result {
+            case .success(let response):
+                print("Post successful: \(response)")
+            case .failure(let error):
+                print("Error posting bike: \(error)")
+            }
+        }
+        bikes.append(newBike)
     }
 }
 

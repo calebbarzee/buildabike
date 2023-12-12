@@ -32,7 +32,7 @@ type Catalog struct {
 	InnerTubes     []InnerTube     `json:"innertubes,omitempty"`
 	SeatPosts      []SeatPost      `json:"seatposts,omitempty"`
 	Handlebars     []Handlebar     `json:"handlebars,omitempty"`
-	BottomBrackets []BottomBracket `json:"bottombrackets,omitempty"`
+	BottomBrackets []BottomBracket `json:"bottomBrackets,omitempty"`
 	Cranks         []Crank         `json:"cranks,omitempty"`
 	Pedals         []Pedal         `json:"pedals,omitempty"`
 }
