@@ -3,4 +3,133 @@
    uuid = "B6D19A27-BF0D-45DA-B5C4-EFE4EF26995A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6BC031D-F46C-46BA-B0EA-E625F34DB39D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "build-a-bike/Views/FindPartView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "addPartToBike()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A6BC031D-F46C-46BA-B0EA-E625F34DB39D - 872a36cfa29b5de6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "build_a_bike.FindPartView.addPartToBike() -&gt; ()"
+                  moduleName = "build-a-bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebbarzee/Documents/1_Projects/buildabike/build-a-bike/Views/FindPartView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "688">
+               </Location>
+               <Location
+                  uuid = "A6BC031D-F46C-46BA-B0EA-E625F34DB39D - 872a36cfa29b5de6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "build_a_bike.FindPartView.addPartToBike() -&gt; ()"
+                  moduleName = "build-a-bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebbarzee/Documents/1_Projects/buildabike/build-a-bike/Views/FindPartView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "220"
+                  endingLineNumber = "220"
+                  offsetFromSymbolStart = "624">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0981D18A-5D59-41D5-8C7F-B4E8E3D498E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "build-a-bike/Views/FindPartView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "findPartById(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38AC85C1-3CA8-45DA-8759-EF058BC25241"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "build-a-bike/Views/FindPartView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "addPartToBike()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "38AC85C1-3CA8-45DA-8759-EF058BC25241 - 872a36cfa29b5bd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "build_a_bike.FindPartView.addPartToBike() -&gt; ()"
+                  moduleName = "build-a-bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebbarzee/Documents/1_Projects/buildabike/build-a-bike/Views/FindPartView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "3816">
+               </Location>
+               <Location
+                  uuid = "38AC85C1-3CA8-45DA-8759-EF058BC25241 - 872a36cfa29b5bd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "build_a_bike.FindPartView.addPartToBike() -&gt; ()"
+                  moduleName = "build-a-bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebbarzee/Documents/1_Projects/buildabike/build-a-bike/Views/FindPartView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "3860">
+               </Location>
+               <Location
+                  uuid = "38AC85C1-3CA8-45DA-8759-EF058BC25241 - 872a36cfa29b5bd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "build_a_bike.FindPartView.addPartToBike() -&gt; ()"
+                  moduleName = "build-a-bike"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebbarzee/Documents/1_Projects/buildabike/build-a-bike/Views/FindPartView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "3880">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

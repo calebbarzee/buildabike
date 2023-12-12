@@ -10,45 +10,71 @@ struct BikeDetailView: View {
             TextField("Enter bike name", text: $bike.name)
                 .font(.title)
                 .padding()
+                .onSubmit {updateBike()}
             
-            List(bike.parts, id: \.self) { part in
-                Text(partData)
-                    .onAppear {
-                        resolvePartData(partId: part) { result in
-                            switch result {
-                            case .success(let part):
-                                self.partData = String(describing: part)
-                            case .failure(let error):
-                                self.partData = "Error: \(error.localizedDescription)"
-                            }
-                        }
-                    }
+        List(bike.parts, id: \.self) { part in
+                       PartView(partId: part)
+                   }
+            Spacer()
+            
+            NavigationLink(destination: FindPartView(bike: $bike)) {
+                Text("Find a Part")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(8)
             }
-                Spacer()
-                
-                NavigationLink(destination: FindPartView(bike: $bike)) {
-                    Text("Find a Part")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(8)
-                }
-                .padding()
-                
-                NavigationLink(destination: PhysicsCalcView(bike: bike)) {
-                    Text("Physics Calculations")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(8)
-                }
-                .padding()
+            .padding()
+            
+            NavigationLink(destination: PhysicsCalcView(bike: bike)) {
+                Text("Physics Calculations")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.green)
+                    .cornerRadius(8)
             }
-            .navigationTitle("Bike Details")
+            .padding()
         }
+        .navigationTitle("Bike Details")
     }
     
-    // add http update method to change bike name
+    
+    
+    func updateBike() {
+        let url = "\(localIP)/api/v1/bike/\(bike.id)"
+        postBike(bike, to: url) { result in
+            switch result {
+            case .success(let response):
+                print("Post successful: \(response)")
+            case .failure(let error):
+                print("Error posting bike: \(error)")
+            }
+        }
+    }
+}
+
+struct PartView: View {
+    let partId: UUID
+    @State private var partData: String = "Loading..."
+
+    var body: some View {
+        Text(partData)
+            .onAppear {
+                loadPartData()
+            }
+    }
+
+    func loadPartData() {
+        // Call your resolvePartData function here
+        resolvePartData(partId: partId) { result in
+            switch result {
+            case .success(let part):
+                self.partData = String(describing: part)
+            case .failure(let error):
+                self.partData = "Error: \(error.localizedDescription)"
+            }
+        }
+    }
     
     // takes an id and returns all data for part
     func resolvePartData(partId: UUID, completion: @escaping (Result<(any PartProtocol), Error>) -> Void) {
@@ -96,3 +122,4 @@ struct BikeDetailView: View {
             }
         }
     }
+}

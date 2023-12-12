@@ -187,7 +187,7 @@ struct FindPartView: View {
 
         for category in categories {
             if let foundPart = category.first(where: { $0.id == id }) {
-                print(foundPart)
+//                print(foundPart)
                 return foundPart
             }
         }
@@ -196,11 +196,92 @@ struct FindPartView: View {
     }
 
 
-    func addPartToBike() {
-        if let selectedPartId = selectedPartId,
-           let selectedPart = findPartById(selectedPartId) as? Part {
-            print(selectedPart)
-//part must have a key for what type of part it is
+//    func addPartToBike() {
+//        if let selectedPartId = selectedPartId {
+//            bike.parts.append(selectedPartId)
+//            // print(selectedPartId)
+//        }
+//        updateBike()
+//    }
+    
+    func updateBike() {
+        let url = "\(localIP)/api/v1/bike/\(bike.id)"
+        postBike(bike, to: url) { result in
+            switch result {
+            case .success(let response):
+                print("Post successful: \(response)")
+            case .failure(let error):
+                print("Error posting bike: \(error)")
+            }
         }
     }
+    
+    func addPartToBike() {
+        guard let selectedPartId = selectedPartId,
+              let selectedPart: any PartProtocol = findPartById(selectedPartId) else { return }
+
+        let selectedPartType = String(describing: type(of: selectedPart))
+
+        // Check if a part of the same type already exists on the bike
+        if bike.parts.contains(where: { partId in
+            guard let part: any PartProtocol = findPartById(partId) else { return false }
+            return String(describing: type(of: part)) == selectedPartType
+        }) {
+            print("A part of type \(selectedPartType) is already present on the bike.")
+            return
+        }
+
+        var isCompatible = true
+
+        // Iterate through the bike parts to check for compatibility
+        for bikePartId in bike.parts {
+            guard let bikePart: any PartProtocol = findPartById(bikePartId) else { continue }
+
+            // Determine the part connection based on the type of the selected part
+            var connectionType: String?
+            switch selectedPartType {
+            case "Pedal":
+                connectionType = "crank"
+            case "Crank":
+                connectionType = "bottomBracket"
+            case "BottomBracket":
+                connectionType = "frame"
+            case "Fork":
+                connectionType = "frame"
+            case "Wheel":
+                connectionType = "fork"
+            case "Headset":
+                connectionType = "fork"
+            case "Handlebar":
+                connectionType = "headset"
+            case "Tire":
+                connectionType = "wheel"
+            case "Innertube":
+                connectionType = "tire"
+            case "Seatpost":
+                connectionType = "frame"
+            default:
+                connectionType = nil
+            }
+
+            // If the type of the bike part matches the connection type, check for compatibility
+            if String(describing: type(of: bikePart)).lowercased() == connectionType?.lowercased() {
+                if let connectionType = connectionType {
+                    let compatibleIds = selectedPart.compatibilities[connectionType]
+                    isCompatible = compatibleIds!.contains(bikePartId.uuidString.lowercased()x)
+                    if !isCompatible { break }
+                }
+            }
+        }
+
+        if isCompatible {
+            bike.parts.append(selectedPartId)
+            updateBike()
+        } else {
+            // Handle the case where the part is not compatible
+            print("Selected part is not compatible with the current bike configuration.")
+        }
+    }
+
+
 }
