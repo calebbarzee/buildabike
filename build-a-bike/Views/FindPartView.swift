@@ -14,26 +14,29 @@ struct PartCategory: Identifiable {
     var parts: [any PartProtocol]
 }
 
+var parts: BicycleComponents = BicycleComponents(
+    frames: [],
+    forks: [],
+    headsets: [],
+    wheels: [],
+    tires: [],
+    innertubes: [],
+    seatposts: [],
+    handlebars: [],
+    bottomBrackets: [],
+    cranks: [],
+    pedals: []
+)
+
 struct FindPartView: View {
     @Binding var bike: Bike
     @State private var searchQuery = ""
     @State private var partTypeSelected: BikePartType = .all
-    @State private var parts: BicycleComponents = BicycleComponents(
-        frames: [],
-        forks: [],
-        headsets: [],
-        wheels: [],
-        tires: [],
-        innertubes: [],
-        seatposts: [],
-        handlebars: [],
-        bottomBrackets: [],
-        cranks: [],
-        pedals: []
-    )
     @State private var isLoading = false
     @State private var selectedPartId: UUID? = nil
-
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
+    
     var body: some View {
         VStack {
             TextField("Search Parts", text: $searchQuery)
@@ -69,10 +72,10 @@ struct FindPartView: View {
                             .background(selectedPartId == part.id ? Color.gray.opacity(0.3) : Color.clear)
                             .onTapGesture {
                                 self.selectedPartId = part.id
-                                }
                             }
                         }
                     }
+                }
                 .navigationTitle("Find a Part for \(bike.name)")
                 Button("Add to \(bike.name)") {
                     addPartToBike()
@@ -80,7 +83,11 @@ struct FindPartView: View {
                 .padding()
                 .border(Color.blue, width: 2)
                 .cornerRadius(3)
+                .alert(alertMessage, isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
             }
+                
         }
         .onAppear {
             loadBikeParts()
@@ -91,8 +98,8 @@ struct FindPartView: View {
         fetchParts(from: "\(localIP)/api/v1/parts") { result in
             switch result {
             case .success(let loadedParts):
-                self.parts = loadedParts
-//                print(self.parts)
+                parts = loadedParts
+                //                print(self.parts)
                 isLoading = false
             case .failure(let error):
                 print("Error loading bikes: \(error)")
@@ -210,6 +217,8 @@ struct FindPartView: View {
             switch result {
             case .success(let response):
                 print("Post successful: \(response)")
+                alertMessage = "Your part has been successfully added to the bike, \(bike.name)."
+                showingAlert = true
             case .failure(let error):
                 print("Error posting bike: \(error)")
             }
@@ -227,7 +236,9 @@ struct FindPartView: View {
             guard let part: any PartProtocol = findPartById(partId) else { return false }
             return String(describing: type(of: part)) == selectedPartType
         }) {
-            print("A part of type \(selectedPartType) is already present on the bike.")
+//            print("A part of type \(selectedPartType) is already present on the bike.")
+            alertMessage = "A part of type \(selectedPartType) is already present on the bike, \(bike.name)."
+            showingAlert = true
             return
         }
 
@@ -268,7 +279,7 @@ struct FindPartView: View {
             if String(describing: type(of: bikePart)).lowercased() == connectionType?.lowercased() {
                 if let connectionType = connectionType {
                     let compatibleIds = selectedPart.compatibilities[connectionType]
-                    isCompatible = compatibleIds!.contains(bikePartId.uuidString.lowercased()x)
+                    isCompatible = compatibleIds!.contains(bikePartId.uuidString.lowercased())
                     if !isCompatible { break }
                 }
             }
@@ -279,9 +290,9 @@ struct FindPartView: View {
             updateBike()
         } else {
             // Handle the case where the part is not compatible
-            print("Selected part is not compatible with the current bike configuration.")
+//            print("Selected part is not compatible with the current bike configuration.")
+            alertMessage = "Selected part is not compatible with the current configuration of the bike, \(bike.name)."
+            showingAlert = true
         }
     }
-
-
 }

@@ -17,6 +17,7 @@
 		3F86905E2B17C3FC00ECDBB6 /* CheckCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F86905D2B17C3FC00ECDBB6 /* CheckCompatibility.swift */; };
 		3F8D6EA12B27EC210074C73E /* ipAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D6EA02B27EC210074C73E /* ipAddress.swift */; };
 		3F981FE12B215A04007DC190 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F981FD62B213664007DC190 /* HomePageView.swift */; };
+		3FAA22682B29468100B364C4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAA22672B29468100B364C4 /* AlertView.swift */; };
 		3FDACAC82B2181C70097DEE2 /* BikeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACAC72B2181C70097DEE2 /* BikeIcon.swift */; };
 		3FDACACA2B2181F30097DEE2 /* BikeIconClickMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACAC92B2181F30097DEE2 /* BikeIconClickMap.swift */; };
 		3FDACACC2B2182350097DEE2 /* SelectorIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDACACB2B2182350097DEE2 /* SelectorIconView.swift */; };
@@ -37,6 +38,7 @@
 		3F86905D2B17C3FC00ECDBB6 /* CheckCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCompatibility.swift; sourceTree = "<group>"; };
 		3F8D6EA02B27EC210074C73E /* ipAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ipAddress.swift; sourceTree = "<group>"; };
 		3F981FD62B213664007DC190 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		3FAA22672B29468100B364C4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		3FDACAC72B2181C70097DEE2 /* BikeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeIcon.swift; sourceTree = "<group>"; };
 		3FDACAC92B2181F30097DEE2 /* BikeIconClickMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeIconClickMap.swift; sourceTree = "<group>"; };
 		3FDACACB2B2182350097DEE2 /* SelectorIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorIconView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				3FDACACB2B2182350097DEE2 /* SelectorIconView.swift */,
 				3FDACACD2B2186AF0097DEE2 /* FindPartView.swift */,
 				3FDACACF2B2187210097DEE2 /* PhysicsCalcView.swift */,
+				3FAA22672B29468100B364C4 /* AlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				3FDACACE2B2186AF0097DEE2 /* FindPartView.swift in Sources */,
 				3F6543842B22E21F00CBC964 /* BikeModel.swift in Sources */,
 				3FDACAC82B2181C70097DEE2 /* BikeIcon.swift in Sources */,
+				3FAA22682B29468100B364C4 /* AlertView.swift in Sources */,
 				3F981FE12B215A04007DC190 /* HomePageView.swift in Sources */,
 				3FDACACC2B2182350097DEE2 /* SelectorIconView.swift in Sources */,
 				3FDACACA2B2181F30097DEE2 /* BikeIconClickMap.swift in Sources */,

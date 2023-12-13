@@ -7,4 +7,4 @@
 
 import Foundation
 
-let localIP = "http://192.168.1.47:8080"
+let localIP = "http://10.114.14.71:8080"
